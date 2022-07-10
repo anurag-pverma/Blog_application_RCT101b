@@ -25,7 +25,7 @@ const fetchBlogPostFailure = (payload)=>{
 
 const fetchBlogPost = (payload)=> (dispatch)=>{
     dispatch(fetchBlogPostRequest());
-    axios.get("/blogs")
+    axios.get('/blogs')
     .then((r)=> dispatch(fetchBlogPostSuccess(r.data)))
     .catch((e)=> dispatch(fetchBlogPostFailure(e.data)))
 };

@@ -11,7 +11,7 @@ const Articles = () => {
   const dispatch = useDispatch();
   useEffect(()=>{
     if(blogs?.length===0){
-      dispatch(fetchBlogPost)
+      dispatch(fetchBlogPost())
     }
   }, [blogs?.length, dispatch])
   return (

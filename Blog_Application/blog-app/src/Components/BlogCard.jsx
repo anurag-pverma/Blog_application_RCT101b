@@ -21,7 +21,7 @@ function BlogCard({blog}) {
         overflow={'hidden'}
         >
             <Box>
-                <Image src= {`${blog.thumnail_pic}`}/>
+                <Image src= {`${blog.thumbnail_pic}`}/>
             </Box>
             <Link to={`/articles/${blog.id}`}>
             <Stack>
@@ -31,7 +31,12 @@ function BlogCard({blog}) {
                 <Text>{blog.description}</Text>
             </Stack>
             <Stack>
-                <Avatar></Avatar>
+                <Avatar src={`${blog.author.profile_pic}`} alt={`Author`}></Avatar>
+                <Stack direction={"column"} spacing={0} fontSize={"sm"}>
+
+                    <Text color={"green.600"} fontWeight={600}>{blog.author.name}</Text>
+                    <Text color={"red.600"}>{blog.author.publish_date}</Text>
+                </Stack>
             </Stack>
 
 

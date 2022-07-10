@@ -9,8 +9,10 @@ import {
   Text,
 } from "@chakra-ui/react";
 import React from "react";
+import { useParams } from "react-router-dom";
 
 const Article = () => {
+  const {id}= useParams();
   return (
     <Container maxW={"3xl"} pb={"4rem"}>
       <Box textAlign="center" py={{ base: 5, md: 10 }}>

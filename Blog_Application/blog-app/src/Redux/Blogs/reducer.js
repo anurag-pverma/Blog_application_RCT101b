@@ -6,7 +6,7 @@ const initialState = {
     error:''
 }
 
-const blogReducer = (state= initialState, action)=>{
+const reducer = (state= initialState, action)=>{
     const {type, payload} = action;
     // eslint - disable -next line default-case
     switch(type){
@@ -14,7 +14,7 @@ const blogReducer = (state= initialState, action)=>{
             return{
                 ... state,
                 loading: true,
-                error: '',
+                error: ''
                 
             };
         case types.FETCH_BLOG_POSTS_SUCCESS:
@@ -22,7 +22,7 @@ const blogReducer = (state= initialState, action)=>{
                 ... state,
                 loading: false,
                 blogs: payload,
-                error: '',
+                error: ''
                 
             };
         case types.FETCH_BLOG_POSTS_FAILURE:
@@ -38,4 +38,4 @@ const blogReducer = (state= initialState, action)=>{
    
 }
 
-export default blogReducer;
+export default reducer;
