@@ -29,4 +29,4 @@ export default App;
 
 
 // Lecture link=> https://course.masaischool.com/lectures/29209
-// watch time: => till 45 min. && 1 hours left
+// watch time: => till 1 hour:10 min. && 35 minute left

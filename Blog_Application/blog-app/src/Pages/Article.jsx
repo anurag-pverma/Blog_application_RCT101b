@@ -9,41 +9,61 @@ import {
   Text,
 } from "@chakra-ui/react";
 import React from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { fetchSingleBlogPost } from "../Redux/Blogs/action";
 
 const Article = () => {
   const {id}= useParams();
+// we have make get request for id 
+/// we want to get the current blog 
+const dispatch = useDispatch();
+const currentBlog = useSelector((store)=> store.blogReducer.currentBlog);
+// incase of we don't have current blog we want to fetch 
+useEffect(()=>{
+  if(id&& Object.keys(currentBlog).length === 0){
+    dispatch(fetchSingleBlogPost(Number(id)))
+    
+  }
+},[currentBlog, dispatch, id])
+
+
+
   return (
     <Container maxW={"3xl"} pb={"4rem"}>
       <Box textAlign="center" py={{ base: 5, md: 10 }}>
         <Avatar
-          name="Dan Abrahmov"
+          name={currentBlog?.author?.name}
           size="lg"
-          src="https://bit.ly/dan-abramov"
+          src={`${currentBlog?.author?.profile_pic}`}
         />
-        <Text fontSize="lg">Masai School</Text>
-        <Text>11/06/2022</Text>
+        <Text fontSize="lg">{currentBlog?.author?.name}</Text>
+        <Text>{currentBlog?.author?.publish_date}</Text>
       </Box>
       <Center textAlign="center">
         <Stack>
-          <Heading>
-            Your most unhappy customers are your greatest source of learning
+          <Heading>{currentBlog.title}
+            {/* Your most unhappy customers are your greatest source of learning */}
           </Heading>
-          <Text fontSize="lg">
-            Far far away, behind the word mountains, far from the countries
-            Vokalia and Consonantia, there live the blind texts.
+          <Text fontSize="lg">{currentBlog.sub_title}
+            {/* Far far away, behind the word mountains, far from the countries
+            Vokalia and Consonantia, there live the blind texts. */}
           </Text>
           <Box>
             <Image
               rounded={"lg"}
               src={
-                "https://preview.colorlib.com/theme/magdesign/images/ximg_2.jpg.pagespeed.ic.fbbBEgB1Q6.webp"
+                `${currentBlog.thumbnail_pic}`
               }
               alt="Thumbnail Image"
             />
           </Box>
           <Box textAlign="left">
-            Far far away, behind the word mountains, far from the countries
+          `${currentBlog.description}`
+            
+
+            {/* Far far away, behind the word mountains, far from the countries
             Vokalia and Consonantia, there live the blind texts. Separated they
             live in Bookmarksgrove right at the coast of the Semantics, a large
             language ocean.
@@ -54,7 +74,7 @@ const Article = () => {
             Even the all-powerful Pointing has no control about the blind texts
             it is an almost unorthographic life One day however a small line of
             blind text by the name of Lorem Ipsum decided to leave for the far
-            World of Grammar.
+            World of Grammar. */}
           </Box>
         </Stack>
       </Center>

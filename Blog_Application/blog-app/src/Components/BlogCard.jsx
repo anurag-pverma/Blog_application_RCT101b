@@ -23,6 +23,7 @@ function BlogCard({blog}) {
             <Box>
                 <Image src= {`${blog.thumbnail_pic}`}/>
             </Box>
+            {/* <Link to={`/articles/${blog.id}`}> */}
             <Link to={`/articles/${blog.id}`}>
             <Stack>
 
