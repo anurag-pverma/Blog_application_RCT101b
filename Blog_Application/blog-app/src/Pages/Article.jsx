@@ -54,7 +54,7 @@ useEffect(()=>{
             <Image
               rounded={"lg"}
               src={
-                `${currentBlog.thumbnail_pic}`
+                `${currentBlog?.thumbnail_pic}`
               }
               alt="Thumbnail Image"
             />
